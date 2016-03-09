@@ -1,0 +1,16 @@
+untar this bundle onto the head hosting the service
+
+run ./share.py -B -u admin -p PASSWORD and make anote of the base64 encoded string it prints
+edit do_shares.sh, changing the value of CREDS to this encoded string
+
+create a csv file with the following columns:
+folder_path,quota,sharetype,sharename
+
+sharetype is either "nfs" or "cifs"
+If the share is NFS you do not need to provide sharename
+
+quota should be in the format 100G or similar -- number and units, no space
+
+None of these fields accepts spaces
+
+run ./do_shares.sh filename.csv

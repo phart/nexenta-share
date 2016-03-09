@@ -1,0 +1,5 @@
+vol01/test1,10G,nfs
+vol01/test2,15G,cifs,test2
+vol01/test_3,100K,cifs,test3
+vol01/test_4,100K,cifs,test4
+vol01/test5,400K,cifs,test5
