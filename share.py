@@ -5,7 +5,10 @@ import json
 import sys
 import re
 
-# port = 2004
+# version 1.0 2016-03-09, initial release
+# version 1.1 2016-04-05, corrected typos in port selection, use %s instead of %d for port --pwh
+# version 1.2 2016-04-22, modified to allow CIFS share names to end with $ --pwh
+
 port = 8457
 server = '127.0.0.1'
 
@@ -146,7 +149,7 @@ def main():
 
     # validate share name
     if (cifs):
-        if (not re.match("^[a-zA-Z0-9\._\-]*$", sharename)):
+        if (not re.match("^[a-zA-Z0-9\._\-]*\$?$", sharename)):
             print "\n%s is not a valid share name\n" % sharename
             sys.exit(1)
 
@@ -159,7 +162,7 @@ def main():
         print "\nyou must request either NFS or CIFS share\n"
         usage(1)
 
-    url = 'http://%s:%d/rest/nms' % (server, port)
+    url = 'http://%s:%s/rest/nms' % (server, port)
 
     # first check status -- does it exist? if not, rest call will fail and exit(1)
     #                       is it already shared?  If so just update the quota
