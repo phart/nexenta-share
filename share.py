@@ -149,6 +149,7 @@ def main():
 
     # validate share name
     if (cifs):
+        # allow single $ at the end, for DFS shares
         if (not re.match("^[a-zA-Z0-9\._\-]*\$?$", sharename)):
             print "\n%s is not a valid share name\n" % sharename
             sys.exit(1)
